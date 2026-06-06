@@ -1,16 +1,68 @@
-# React + Vite
+# North & Noble
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium luxury fashion storefront built using React and Vite.
 
-Currently, two official plugins are available:
+## Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+North & Noble is a luxury fashion homepage concept focused on modern frontend design and component-based development using React.
 
-## React Compiler
+The project follows a premium black and gold visual identity and showcases a complete homepage layout for a luxury fashion brand.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+* Responsive homepage layout
+* Premium black and gold design
+* Component-based React architecture
+* Hero section
+* Product showcase section
+* Category showcase section
+* Brand philosophy section
+* Customer testimonials section
+* Newsletter UI section
+* Professional footer
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+* React
+* Vite
+* JavaScript
+* CSS3
+
+## Components Used
+
+* Navbar
+* Hero
+* Categories
+* Products
+* Philosophy
+* Features
+* Testimonials
+* Newsletter
+* Footer
+
+## Screenshots
+
+### Hero Section
+
+![Hero Section](Hero.png)
+
+
+### Full Homepage
+
+![Full Homepage](Full-Page.jpeg)
+
+## Installation
+
+```bash
+npm install
+npm run dev
+```
+
+## Learning Outcome
+
+This project helped me understand React component structure, UI design principles, project organization, and frontend development fundamentals.
+
+## Author
+
+Priti Mishra
+
