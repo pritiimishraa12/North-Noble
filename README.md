@@ -44,11 +44,12 @@ The project follows a premium black and gold visual identity and showcases a com
 
 ### Hero Section
 
-![Hero Section](./screenshots/Hero.png)
+![Hero Section](Hero.png)
+
 
 ### Full Homepage
 
-![Full Homepage](./screenshots/Full-Page.jpeg)
+![Full Homepage](Full-Page.jpeg)
 
 ## Installation
 
