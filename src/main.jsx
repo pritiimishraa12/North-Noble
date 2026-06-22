@@ -6,12 +6,13 @@ import App from "./App.jsx";
 import ErrorBoundary from "./ErrorBoundary.jsx";
 
 const rootElement = document.getElementById("root");
+const basePath = import.meta.env.VITE_BASE_PATH || "/";
 
 if (rootElement) {
   createRoot(rootElement).render(
     <StrictMode>
       <ErrorBoundary>
-        <BrowserRouter basename="/north-noble/">
+        <BrowserRouter basename={basePath}>
           <App />
         </BrowserRouter>
       </ErrorBoundary>
