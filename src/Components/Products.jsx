@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../supabase";
+import { supabase, isSupabaseConfigured } from "../supabase";
 
 function Products({ filterCategory = "all", title = "Featured Collection" }) {
   const defaultProducts = [
@@ -114,24 +114,33 @@ function Products({ filterCategory = "all", title = "Featured Collection" }) {
   }, []);
 
   async function fetchProducts() {
-    const { data, error } = await supabase.from("products").select("*");
-
-    if (error) {
-      console.log("Error fetching products:", error.message);
+    if (!isSupabaseConfigured || !supabase) {
+      console.log("Supabase not configured, using default products only");
       return;
     }
 
-    if (data) {
-      const adminProducts = data.map((product) => ({
-        image: product.image_url,
-        title: product.name,
-        price: product.price,
-        reviews: product.reviews || 0,
-        category: product.category,
-        featured: true,
-      }));
+    try {
+      const { data, error } = await supabase.from("products").select("*");
 
-      setProducts([...defaultProducts, ...adminProducts]);
+      if (error) {
+        console.log("Error fetching products:", error.message);
+        return;
+      }
+
+      if (data) {
+        const adminProducts = data.map((product) => ({
+          image: product.image_url,
+          title: product.name,
+          price: product.price,
+          reviews: product.reviews || 0,
+          category: product.category,
+          featured: true,
+        }));
+
+        setProducts([...defaultProducts, ...adminProducts]);
+      }
+    } catch (err) {
+      console.log("Error connecting to Supabase:", err);
     }
   }
 

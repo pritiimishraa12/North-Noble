@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { supabase } from "../supabase";
+import { supabase, isSupabaseConfigured } from "../supabase";
 
 function AddProduct() {
   const [product, setProduct] = useState({
@@ -20,30 +20,40 @@ function AddProduct() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const { error } = await supabase.from("products").insert([
-      {
-        name: product.name,
-        price: product.price,
-        category: product.category,
-        image_url: product.image_url,
-        reviews: product.reviews || "0",
-      },
-    ]);
-
-    if (error) {
-      setMessage("Product could not be added. Please try again.");
+    if (!isSupabaseConfigured || !supabase) {
+      setMessage("Supabase is not configured. Cannot add products.");
       return;
     }
 
-    setMessage("Product added successfully.");
+    try {
+      const { error } = await supabase.from("products").insert([
+        {
+          name: product.name,
+          price: product.price,
+          category: product.category,
+          image_url: product.image_url,
+          reviews: product.reviews || "0",
+        },
+      ]);
 
-    setProduct({
-      name: "",
-      price: "",
-      category: "",
-      image_url: "",
-      reviews: "",
-    });
+      if (error) {
+        setMessage("Product could not be added. Please try again.");
+        return;
+      }
+
+      setMessage("Product added successfully.");
+
+      setProduct({
+        name: "",
+        price: "",
+        category: "",
+        image_url: "",
+        reviews: "",
+      });
+    } catch (err) {
+      setMessage("Error connecting to database. Please try again.");
+      console.log("Error:", err);
+    }
   }
 
   return (
