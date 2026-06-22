@@ -2,6 +2,9 @@
 
 A premium luxury fashion storefront built using React, Vite, Supabase, and React Router.
 
+**Live Demo:** https://north-noble.vercel.app/
+
+
 ## Project Overview
 
 North & Noble is a modern fashion storefront inspired by luxury retail brands. The project was initially developed as a static React homepage and later enhanced with dynamic product management, category-based navigation, and Supabase integration.
