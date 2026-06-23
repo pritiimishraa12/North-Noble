@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { supabase } from "./supabase";
+
 import Navbar from "./Components/Navbar";
 import Hero from "./Components/Hero";
 import Categories from "./Components/Categories";
@@ -9,6 +12,8 @@ import Testimonials from "./Components/Testimonials";
 import Newsletter from "./Components/Newsletter";
 import Footer from "./Components/Footer";
 import AddProduct from "./Components/AddProduct";
+import SignIn from "./Components/SignIn";
+
 import "./App.css";
 
 function Home() {
@@ -62,16 +67,64 @@ function About() {
 function App() {
   const isAdmin = true;
 
+  const [session, setSession] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => {
+      setSession(data.session);
+      setLoading(false);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  if (loading) {
+    return <div className="auth-loading">Loading...</div>;
+  }
+
+  if (!session) {
+    return <SignIn />;
+  }
+
   return (
     <div className="app">
       <Navbar isAdmin={isAdmin} />
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/collections" element={<Products filterCategory="collections" title="Collections" />} />
-        <Route path="/men" element={<Products filterCategory="men" title="Men Collection" />} />
-        <Route path="/women" element={<Products filterCategory="women" title="Women Collection" />} />
-        <Route path="/accessories" element={<Products filterCategory="accessories" title="Accessories Collection" />} />
+
+        <Route
+          path="/collections"
+          element={<Products filterCategory="collections" title="Collections" />}
+        />
+
+        <Route
+          path="/men"
+          element={<Products filterCategory="men" title="Men Collection" />}
+        />
+
+        <Route
+          path="/women"
+          element={<Products filterCategory="women" title="Women Collection" />}
+        />
+
+        <Route
+          path="/accessories"
+          element={
+            <Products
+              filterCategory="accessories"
+              title="Accessories Collection"
+            />
+          }
+        />
+
         <Route path="/about" element={<About />} />
         <Route path="/admin/add-product" element={<AddProduct />} />
       </Routes>

@@ -1,6 +1,11 @@
 import { NavLink } from "react-router-dom";
+import { supabase } from "../supabase";
 
 function Navbar({ isAdmin }) {
+  async function handleLogout() {
+    await supabase.auth.signOut();
+  }
+
   return (
     <>
       <div className="top-offer">
@@ -29,6 +34,15 @@ function Navbar({ isAdmin }) {
               + ADD
             </NavLink>
           )}
+
+          
+          <button
+          className="logout-icon-btn"
+         onClick={handleLogout}
+         title="Logout"
+         >
+          ⇥ 
+         </button>
         </div>
       </header>
     </>

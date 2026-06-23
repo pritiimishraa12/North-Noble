@@ -886,3 +886,162 @@
 .about-boxes div {
   border-radius: 16px;
 }
+
+.signin-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(176, 141, 87, 0.18), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(17, 17, 17, 0.10), transparent 35%),
+    linear-gradient(135deg, #f8f3eb 0%, #ffffff 48%, #efe3d1 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.signin-box {
+  width: 100%;
+  max-width: 560px;
+  background: rgba(255, 255, 255, 0.96);
+  padding: 42px 48px;
+  border: 1px solid #d8c09a;
+  box-shadow: 0 24px 65px rgba(17, 17, 17, 0.13);
+  text-align: center;
+  border-radius: 14px;
+}
+
+.signin-box::before {
+  content: "NORTH & NOBLE";
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 15px;
+  letter-spacing: 6px;
+  color: #a37736;
+  margin-bottom: 22px;
+}
+
+.signin-box h2 {
+  font-size: 34px;
+  color: #111111;
+  margin-bottom: 8px;
+}
+
+.signin-box p {
+  color: #675c50;
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.signin-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.signin-box input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #d4bd98;
+  background: #fffaf3;
+  font-size: 15px;
+  outline: none;
+  border-radius: 8px;
+}
+
+.signin-box input:focus {
+  border-color: #a37736;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(176, 141, 87, 0.12);
+}
+
+.signin-box button {
+  letter-spacing: 2px;
+  font-weight: 500;
+  width: 100%;
+  padding: 15px;
+  background: #111111;
+  color: #ffffff;
+  border: none;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-top: 4px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.signin-box button:hover {
+  background: #9b6d2f;
+  transform: translateY(-2px);
+}
+
+.auth-switch {
+  margin-top: 24px;
+}
+
+.auth-switch p {
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.auth-switch span {
+  color: #9b6d2f;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.auth-switch span:hover {
+  text-decoration: underline;
+}
+
+.auth-loading {
+  min-height: 100vh;
+  background: #f8f4ee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #111111;
+}
+
+.logout-icon-btn {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #d8c39f;
+  border-radius: 50%;
+  background: transparent;
+  color: #111111;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-icon-btn:hover {
+  background: #111111;
+  color: #ffffff;
+  border-color: #111111;
+}
+
+.logout-btn:hover {
+  background: #b08d57;
+}
+
+.auth-label {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px !important;
+  color: #9b6d2f !important;
+  font-weight: 700;
+  margin-bottom: 8px !important;
+}
+
+.auth-divider {
+  width: 55px;
+  height: 2px;
+  background: #b08d57;
+  margin: 0 auto 26px;
+}
